@@ -1,35 +1,11 @@
 var http = require('http');
 var fs = require('fs');
 
+var files = JSON.parse(fs.readFileSync("view/index.json"));
 var users = JSON.parse(fs.readFileSync("data/users.json"));
 
 // Date.now().tostring() =  Mon Sep 28 1998 14:36:22 GMT-0700 (PDT)
 // console.log(Array.isArray(Object.keys(files["/index.html"].Permision)));
-
-function find(path){
-	var files = {};
-	var rf = fs.readdirSync(path);
-
-	var extend = function(target) {
-		var sources = [].slice.call(arguments, 1);
-	    sources.forEach(function (source) {
-	        for (var prop in source) {
-	            target[prop] = source[prop];
-	        }
-	    });
-	    return target;
-    };
-    console.log("loading dir: "+path);
-	for (var f in rf){
-		console.log("loading file: "+path+"/"+rf[f]);
-		files = extend({}, files, JSON.parse(fs.readFileSync(path+"/"+rf[f])));
-	}
-	console.log("ending dir: "+path);
-    return files;
-}
-
-files = find("view");
-
 http.createServer(function (req, res) {
 	if ((files[req.url] == null) || files[req.url].file == null || files[req.url].type == null){
 		
@@ -86,22 +62,6 @@ http.createServer(function (req, res) {
 						 	con = con.replace(per.file.file.cmd[f].from, temp);
 						}
 					break;
-					case "redirect":
-						switch(per.file.file.cmd[f].code){
-							case "301":
-								res.writeHead(301, {'Location': per.file.file.cmd[f].Location});
-							break;
-							case "302":
-								res.writeHead(302, {'Location': per.file.file.cmd[f].Location});
-							break;
-						}
-						res.end();
-						return;
-					break;
-					case "logout":
-						if (files.user.username != null)
-							users.online.splice(per.id, 1);
-					break;
 				}
 			}
 
@@ -127,7 +87,7 @@ http.createServer(function (req, res) {
 function getFile(url, method, cookie){
 	var per = Object.keys(files[url].Permision);
 	var level = "default";
-	var r = { "file": files[url].Permision.default, "user": null, "id":null};
+	var r = { "file": files[url].Permision.default, "user": null};
 	per.forEach(function(item) {
 		if (item != "default") {
 			if (method == files[url].Permision[item].Method) {
@@ -138,7 +98,7 @@ function getFile(url, method, cookie){
 							for (j=0;j<users.online.length;j++){
 								if(cookies[i].split("=")[1] == users.online[j].id){
 									if (users.register[users.online[j].name].Level == files[url].Permision[item].Level){
-										r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], "id": j};
+										r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name]};
 										return;
 									}
 
@@ -146,7 +106,7 @@ function getFile(url, method, cookie){
 									var t = users.Level[users.register[users.online[j].name].Level].AddLevel.split(";");
 									for (x =0;x<t.length;x++)
 										if (t[x] == files[url].Permision[item].Level){
-											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], "id": j};
+											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name]};
 											return;
 										}
 
