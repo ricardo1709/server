@@ -41,7 +41,7 @@ http.createServer(function (req, res) {
 				res.writeHead(301, {'Location': files[req.url].redirect.Location});
 			break;
 			case "302":
-				res.writeHead(301, {'Location': files[req.url].redirect.Location});
+				res.writeHead(302, {'Location': files[req.url].redirect.Location});
 			break;
 		}
 		res.end();
