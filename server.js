@@ -1,35 +1,11 @@
 var http = require('http');
 var fs = require('fs');
 
+var files = JSON.parse(fs.readFileSync("view/index.json"));
 var users = JSON.parse(fs.readFileSync("data/users.json"));
 
 // Date.now().tostring() =  Mon Sep 28 1998 14:36:22 GMT-0700 (PDT)
 // console.log(Array.isArray(Object.keys(files["/index.html"].Permision)));
-
-function find(path){
-	var files = {};
-	var rf = fs.readdirSync(path);
-
-	var extend = function(target) {
-		var sources = [].slice.call(arguments, 1);
-	    sources.forEach(function (source) {
-	        for (var prop in source) {
-	            target[prop] = source[prop];
-	        }
-	    });
-	    return target;
-    };
-    console.log("loading dir: "+path);
-	for (var f in rf){
-		console.log("loading file: "+path+"/"+rf[f]);
-		files = extend({}, files, JSON.parse(fs.readFileSync(path+"/"+rf[f])));
-	}
-	console.log("ending dir: "+path);
-    return files;
-}
-
-files = find("view");
-
 http.createServer(function (req, res) {
 	if ((files[req.url] == null) || files[req.url].file == null || files[req.url].type == null){
 		
