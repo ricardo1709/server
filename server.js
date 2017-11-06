@@ -86,16 +86,6 @@ http.createServer(function (req, res) {
 						 	con = con.replace(per.file.file.cmd[f].from, temp);
 						}
 					break;
-					case "redirect":
-						switch(per.file.file.cmd[f].code){
-							case "301":
-								res.writeHead(301, {'Location': per.file.file.cmd[f].Location});
-							break;
-							case "302":
-								res.writeHead(301, {'Location': per.file.file.cmd[f].Location});
-							break;
-						}
-					break;
 				}
 			}
 
