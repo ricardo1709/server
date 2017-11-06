@@ -1,0 +1,179 @@
+{
+	"online": [
+		{"name" : "ricardo1709", "id": "124", "date": ""}
+	],
+	"Level": {
+		"Mod" : {
+			"AddLevel" : "Admin;User;default",
+			"All" : {
+				"Add"   : true,
+				"View"  : true,
+				"Edit"  : true,
+				"Remove": true,
+				"Flag"  : {
+					"Add"   : true,
+					"Remove": true
+				},
+				"Comment": {
+					"Add" 	: true,
+					"Remove": true,
+					"Edit"  : true,
+					"Flag"  : {
+						"Add"   : true,
+						"Remove": true
+					}
+				}
+			},
+			"Owner" : {
+				"Add"   : true,
+				"View"  : true,
+				"Edit"  : true,
+				"Remove": true,
+				"Flag"  : {
+					"Add"   : true,
+					"Remove": true
+				},
+				"Comment": {
+					"Add" 	: true,
+					"Remove": true,
+					"Edit"  : true,
+					"Flag"  : {
+						"Add"   : true,
+						"Remove": true
+					}
+				}
+			}
+		},
+		"Admin" : {
+			"AddLevel" : "User;default",
+			"All" : {
+				"Add"   : true,
+				"View"  : true,
+				"Edit"  : false,
+				"Remove": true,
+				"Flag"  : {
+					"Add"   : true,
+					"Remove": true
+				},
+				"Comment": {
+					"Add" 	: true,
+					"Remove": true,
+					"Edit"  : false,
+					"Flag"  : {
+						"Add"   : true,
+						"Remove": true
+					}
+				}
+			},
+			"Owner" : {
+				"Add"   : true,
+				"View"  : true,
+				"Edit"  : true,
+				"Remove": true,
+				"Flag"  : {
+					"Add"   : true,
+					"Remove": false
+				},
+				"Comment": {
+					"Add" 	: true,
+					"Remove": true,
+					"Edit"  : true,
+					"Flag"  : {
+						"Add"   : true,
+						"Remove": false
+					}
+				}
+			}
+		}, 
+		"User" : {
+			"AddLevel" : "default",
+			"All" : {
+				"Add"   : true,
+				"View"  : true,
+				"Edit"  : false,
+				"Remove": false,
+				"Flag"  : {
+					"Add"   : true,
+					"Remove": false
+				},
+				"Comment": {
+					"Add" 	: true,
+					"Remove": false,
+					"Edit"  : false,
+					"Flag"  : {
+						"Add"   : true,
+						"Remove": false
+					}
+				}
+			},
+			"Owner" : {
+				"Add"   : true,
+				"View"  : true,
+				"Edit"  : true,
+				"Remove": true,
+				"Flag"  : {
+					"Add"   : true,
+					"Remove": false
+				},
+				"Comment": {
+					"Add" 	: true,
+					"Remove": true,
+					"Edit"  : true,
+					"Flag"  : {
+						"Add"   : true,
+						"Remove": false
+					}
+				}
+			}
+		},
+		"default" : {
+			"All" : {
+				"Add"   : false,
+				"View"  : true,
+				"Edit"  : false,
+				"Remove": false,
+				"Flag"  : {
+					"Add"   : false,
+					"Remove": false
+				},
+				"Comment": {
+					"Add" 	: false,
+					"Remove": false,
+					"Edit"  : false,
+					"Flag"  : {
+						"Add"   : false,
+						"Remove": false
+					}
+				}
+			},
+			"Owner" : {
+				"Add"   : false,
+				"View"  : true,
+				"Edit"  : false,
+				"Remove": false,
+				"Flag"  : {
+					"Add"   : false,
+					"Remove": false
+				},
+				"Comment": {
+					"Add" 	: false,
+					"Remove": false,
+					"Edit"  : false,
+					"Flag"  : {
+						"Add"   : false,
+						"Remove": false
+					}
+				}
+			}
+		}
+	},
+	"register":{
+		"ricardo1709" : {
+			"Level"   : 	"Mod",
+			"fullname": 	"Ricardo",
+			"username": 	"ricardo1709",
+			"pass"	  : 	"1234"
+		}
+	}
+	
+}

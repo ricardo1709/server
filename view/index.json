@@ -1,0 +1,66 @@
+{
+	"/index.html": {
+		"file" : "index.html",
+		"type" : "text/html",
+		"Permision" : {
+			"Admin" : {
+				"Login" : 	"true",
+				"Method": 	"GET",
+				"Level" : 	"Admin", 
+				"file"  : 	{
+					"name": "index.html",
+					"cmd" : [
+						{
+							"type":  "var",
+							"key" :  "user",
+							"value": "!username" 
+						
+						},
+						{	
+							"type"		: "replace",
+							"from"		: "<login/>",
+							"to-file"   : "login_nav.html"
+						},
+						{	
+							"type"	: "replace",
+							"from"	: "<username/>",
+							"to-var": "user"
+						}
+					]
+					
+				},
+				"type"  : 	"text/html"
+			},
+			"default": {
+				"file"  : 	{
+					"name": "index.html",
+					"cmd" : [
+						{	
+							"type"		: "replace",
+							"from"		: "<login/>",
+							"to-file"   : "login_default.html"
+						}
+					]
+					
+				},
+				"type" : "text/html"
+			}
+		}
+	},
+	"/" : {
+		"redirect": {
+			"Location":"/index.html",
+			"code": "301"
+		},
+		"file" : "index.html",
+		"type" : "text/html"
+	},
+	"/favicon.ico" : {
+		"file" : "favicon.ico",
+		"type" : "image/icon"
+	},
+	"/style.css" : {
+		"file" : "style.css",
+		"type" : "text/css"
+	}
+}
