@@ -1,9 +1,9 @@
 {
-	"/logout.html" : {
-		"file" : "login_nav.html",
+	"/logout" : {
+		"file" : "index.html",
 		"type" : "text/html",
-		"Permision" : {
-			"User" : {
+
+		"User" : {
 				"Login" : 	"true",
 				"Method": 	"GET",
 				"Level" : 	"User", 
@@ -23,20 +23,19 @@
 				},
 				"type"  : 	"text/html"
 			},
-			"default": {
-				"file"  : 	{
-					"name": "index.html",
-					"cmd" : [
-						{	
-							"type"		: "replace",
-							"from"		: "<login/>",
-							"to-file"   : "login_default.html"
-						}
-					]
-					
-				},
-				"type" : "text/html"
-			}
+		"default": {
+			"file"  : 	{
+				"name": "index.html",
+				"cmd" : [
+					{	
+						"type"		: "replace",
+						"from"		: "<login/>",
+						"to-file"   : "login_default.html"
+					}
+				]
+				
+			},
+			"type" : "text/html"
+		}
 		}
 	}
-}
