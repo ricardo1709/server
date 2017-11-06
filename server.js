@@ -92,15 +92,13 @@ http.createServer(function (req, res) {
 								res.writeHead(301, {'Location': per.file.file.cmd[f].Location});
 							break;
 							case "302":
-								res.writeHead(302, {'Location': per.file.file.cmd[f].Location});
+								res.writeHead(301, {'Location': per.file.file.cmd[f].Location});
 							break;
 						}
-						res.end();
-						return;
 					break;
 					case "logout":
-						if (files.user.username != null)
-							users.online.splice(per.id, 1);
+						if (per.id != null)
+							users.online.pull(per.id);
 					break;
 				}
 			}
@@ -146,7 +144,7 @@ function getFile(url, method, cookie){
 									var t = users.Level[users.register[users.online[j].name].Level].AddLevel.split(";");
 									for (x =0;x<t.length;x++)
 										if (t[x] == files[url].Permision[item].Level){
-											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], "id": j};
+											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], , "id": j};
 											return;
 										}
 
