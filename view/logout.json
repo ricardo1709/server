@@ -11,9 +11,6 @@
 					"name": "index.html",
 					"cmd" : [
 						{
-							"type": "logout"
-						},
-						{
 							"type": "redirect",
 							"Location":"/index.html",
 							"code": "301"

@@ -96,10 +96,6 @@ http.createServer(function (req, res) {
 							break;
 						}
 					break;
-					case "logout":
-						if (per.id != null)
-							users.online.pull(per.id);
-					break;
 				}
 			}
 
@@ -125,7 +121,7 @@ http.createServer(function (req, res) {
 function getFile(url, method, cookie){
 	var per = Object.keys(files[url].Permision);
 	var level = "default";
-	var r = { "file": files[url].Permision.default, "user": null, "id":null};
+	var r = { "file": files[url].Permision.default, "user": null};
 	per.forEach(function(item) {
 		if (item != "default") {
 			if (method == files[url].Permision[item].Method) {
@@ -136,7 +132,7 @@ function getFile(url, method, cookie){
 							for (j=0;j<users.online.length;j++){
 								if(cookies[i].split("=")[1] == users.online[j].id){
 									if (users.register[users.online[j].name].Level == files[url].Permision[item].Level){
-										r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], "id": j};
+										r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name]};
 										return;
 									}
 
@@ -144,7 +140,7 @@ function getFile(url, method, cookie){
 									var t = users.Level[users.register[users.online[j].name].Level].AddLevel.split(";");
 									for (x =0;x<t.length;x++)
 										if (t[x] == files[url].Permision[item].Level){
-											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], , "id": j};
+											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name]};
 											return;
 										}
 
