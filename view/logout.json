@@ -1,3 +1,38 @@
 {
-	
-}
+	"/logout" : {
+		"file" : "index.html",
+		"type" : "text/html",
+
+		"User" : {
+				"Login" : 	"true",
+				"Method": 	"GET",
+				"Level" : 	"User", 
+				"file"  : 	{
+					"name": "index.html",
+					"cmd" : [
+						{
+							"type": "redirect",
+							"Location":"/index.html",
+							"code": "301"
+						}
+					]
+					
+				},
+				"type"  : 	"text/html"
+			},
+		"default": {
+			"file"  : 	{
+				"name": "index.html",
+				"cmd" : [
+					{	
+						"type"		: "replace",
+						"from"		: "<login/>",
+						"to-file"   : "login_default.html"
+					}
+				]
+				
+			},
+			"type" : "text/html"
+		}
+		}
+	}
