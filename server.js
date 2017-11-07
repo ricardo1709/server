@@ -41,7 +41,7 @@ http.createServer(function (req, res) {
 				res.writeHead(301, {'Location': files[req.url].redirect.Location});
 			break;
 			case "302":
-				res.writeHead(301, {'Location': files[req.url].redirect.Location});
+				res.writeHead(302, {'Location': files[req.url].redirect.Location});
 			break;
 		}
 		res.end();
@@ -96,6 +96,22 @@ http.createServer(function (req, res) {
 						 	con = con.replace(per.file.file.cmd[f].from, temp);
 						}
 					break;
+					case "redirect":
+						switch(per.file.file.cmd[f].code){
+							case "301":
+								res.writeHead(301, {'Location': per.file.file.cmd[f].Location});
+							break;
+							case "302":
+								res.writeHead(302, {'Location': per.file.file.cmd[f].Location});
+							break;
+						}
+						res.end();
+						return;
+					break;
+					case "logout":
+						if (files.user.username != null)
+							users.online.splice(per.id, 1);
+					break;
 				}
 			}
 
@@ -121,7 +137,7 @@ http.createServer(function (req, res) {
 function getFile(url, method, cookie){
 	var per = Object.keys(files[url].Permision);
 	var level = "default";
-	var r = { "file": files[url].Permision.default, "user": null};
+	var r = { "file": files[url].Permision.default, "user": null, "id":null};
 	per.forEach(function(item) {
 		if (item != "default") {
 			if (method == files[url].Permision[item].Method) {
@@ -132,7 +148,7 @@ function getFile(url, method, cookie){
 							for (j=0;j<users.online.length;j++){
 								if(cookies[i].split("=")[1] == users.online[j].id){
 									if (users.register[users.online[j].name].Level == files[url].Permision[item].Level){
-										r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name]};
+										r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], "id": j};
 										return;
 									}
 
@@ -140,7 +156,7 @@ function getFile(url, method, cookie){
 									var t = users.Level[users.register[users.online[j].name].Level].AddLevel.split(";");
 									for (x =0;x<t.length;x++)
 										if (t[x] == files[url].Permision[item].Level){
-											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name]};
+											r={ "file": files[url].Permision[item], "user": users.register[users.online[j].name], "id": j};
 											return;
 										}
 
