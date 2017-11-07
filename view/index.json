@@ -3,10 +3,10 @@
 		"file" : "index.html",
 		"type" : "text/html",
 		"Permision" : {
-			"Admin" : {
+			"User" : {
 				"Login" : 	"true",
 				"Method": 	"GET",
-				"Level" : 	"Admin", 
+				"Level" : 	"User", 
 				"file"  : 	{
 					"name": "index.html",
 					"cmd" : [

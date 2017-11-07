@@ -48,8 +48,18 @@ http.createServer(function (req, res) {
 
 	} else if ((files[req.url].Permision != null && files[req.url].Permision.default != null) && files[req.url].Permision.default.file != null && files[req.url].Permision.default.type != null) {
 		var per = getFile(req.url, req.method, req.headers.cookie);
-
+		var body = "";
 		
+		if (req.method == "POST"){
+
+			req.on('data', function (data) {
+	            body += data;
+	            console.log("Partial body: " + body);
+	        });
+	        req.on('end', function () {
+	            console.log("Body: " + body);
+	        });
+		}
 
 		if (typeof per.file.file == "string"){
 			fs.readFile('public/'+per.file.file, 'utf8', function(err, data) {
