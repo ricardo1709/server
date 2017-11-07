@@ -31,6 +31,21 @@
 				},
 				"type"  : 	"text/html"
 			},
+			"login": {
+				"Login": "false",
+				"Method": "POST",
+				"file" : {
+					"name":"index.html",
+					"cmd" : [
+						{
+							"type": "login",
+							"username" : "name",
+							"password" : "pass",
+							"Location":"/index.html"
+						}
+					]
+				}
+			},
 			"default": {
 				"file"  : 	{
 					"name": "index.html",
