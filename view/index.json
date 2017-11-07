@@ -3,10 +3,10 @@
 		"file" : "index.html",
 		"type" : "text/html",
 		"Permision" : {
-			"Admin" : {
+			"User" : {
 				"Login" : 	"true",
 				"Method": 	"GET",
-				"Level" : 	"Admin", 
+				"Level" : 	"User", 
 				"file"  : 	{
 					"name": "index.html",
 					"cmd" : [
@@ -30,6 +30,21 @@
 					
 				},
 				"type"  : 	"text/html"
+			},
+			"login": {
+				"Login": "false",
+				"Method": "POST",
+				"file" : {
+					"name":"index.html",
+					"cmd" : [
+						{
+							"type": "login",
+							"username" : "name",
+							"password" : "pass",
+							"Location":"/index.html"
+						}
+					]
+				}
 			},
 			"default": {
 				"file"  : 	{
